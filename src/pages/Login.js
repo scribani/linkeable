@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { LargeButton } from "../components/Buttons";
 import { Container } from "../components/UI/Container";
 
 const LoginContainer = styled.div`
@@ -12,7 +13,7 @@ const LoginContainer = styled.div`
   align-items: center;
   h2 {
     font-size: 24px;
-    color: #4f4f4f;
+    color:var(--gray-2);
     align-self: flex-start;
     margin-left: 45px;
   }
@@ -21,7 +22,7 @@ const LoginContainer = styled.div`
     font-size: 48px;
     font-weight: bold;
     span {
-      background-color: #4f4f4f;
+      background-color: var(--gray-2);
       color: #fff;
       padding: 2px;
       border-radius: 10px;
@@ -47,8 +48,8 @@ const Login = () => {
           Linke <span>able</span>
         </p>
         <ButtonContainer>
-          <button>Continue as Guest</button>
-          <button>Login</button>
+          <LargeButton> Continue as  Guest</LargeButton>
+          <LargeButton>Login</LargeButton>
         </ButtonContainer>
       </LoginContainer>
     </Container>

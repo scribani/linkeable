@@ -1,6 +1,7 @@
 import { Global, css } from "@emotion/react";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AvatarForm } from "./components/AvatarForm";
 import { SessionProvider } from "./contexts/SessionContext";
 import Candidates from "./pages/Candidates";
 import Login from "./pages/Login";
@@ -15,6 +16,7 @@ const globalCSS = css`
     --gray-4: #bdbdbd;
     --gray-5: #e0e0e0;
     --card-shadow: 2px 2px 0px #bdbdbd;
+    --bg-color:#E5E5E5;
   }
   * {
     box-sizing: border-box;
@@ -22,6 +24,7 @@ const globalCSS = css`
   body {
     font-family: "Inter", sans-serif;
     color: var(--gray-2);
+    background-color: var(--bg-color);
   }
 `;
 

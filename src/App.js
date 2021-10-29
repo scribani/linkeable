@@ -1,6 +1,7 @@
 import { Global, css } from "@emotion/react";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { SessionProvider } from "./contexts/SessionContext";
 import Candidates from "./pages/Candidates";
 import Login from "./pages/Login";
 import NewCandidate from "./pages/NewCandidate";
@@ -28,14 +29,16 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/candidates" component={Candidates} />
-          <Route path="/new-candidate" component={NewCandidate} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
+      <SessionProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route path="/candidates" component={Candidates} />
+            <Route path="/new-candidate" component={NewCandidate} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </SessionProvider>
     </>
   );
 }

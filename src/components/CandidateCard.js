@@ -80,7 +80,7 @@ export default function CandidateCard({
           <Name>{name}</Name>
         </FlexContainer>
         <Text>{profesion}</Text>
-        <Text>{parseDate(workExperience)} of experience</Text>
+        <Text>{parseDate(workExperience, false)} of experience</Text>
       </FlexContainer>
     </MainContainer>
   );

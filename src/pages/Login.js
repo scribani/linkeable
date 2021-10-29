@@ -48,7 +48,7 @@ const Login = () => {
           Linke <span>able</span>
         </p>
         <ButtonContainer>
-          <LargeButton> Continue as  Guest</LargeButton>
+          <LargeButton> Continue As  Guest</LargeButton>
           <LargeButton>Login</LargeButton>
         </ButtonContainer>
       </LoginContainer>

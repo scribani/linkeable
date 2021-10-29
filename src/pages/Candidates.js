@@ -11,10 +11,11 @@ import { getDocuments } from "../services/firebase/store";
 const StyledNavBar = styled.nav`
   position: absolute;
   top: calc(100vh - 54px);
-  width: 296px;
+  width: 360px;
   display: flex;
   justify-content: space-between;
   padding: 0 32px 14px 32px;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
 `;
 
 export default function Candidates() {

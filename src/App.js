@@ -1,7 +1,6 @@
 import { Global, css } from "@emotion/react";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AvatarForm } from "./components/AvatarForm";
 import { SessionProvider } from "./contexts/SessionContext";
 import Candidates from "./pages/Candidates";
 import Login from "./pages/Login";

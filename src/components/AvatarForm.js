@@ -23,7 +23,7 @@ const AvatarContainer = styled.div`
       font-weight: bold;
       font-size: 12px;
     }
-    label {
+    input {
       border: 1px solid #ccc;
       display: inline-block;
       border-radius: 10px;
@@ -32,12 +32,10 @@ const AvatarContainer = styled.div`
       width: 200px;
       color: var(--gray-5);
     }
-    input {
-      display: none;
-    }
+  
     img{
-      width: 50%;
-      align-self: center;
+     width: 50%;
+     align-self: center;
      margin-bottom:-10px;
      border-radius: 50px;
      border: 1px solid #ccc;
@@ -56,18 +54,18 @@ export const AvatarForm = () => {
   return (
     <AvatarContainer>
       <section>
-        <p>Avatar File</p>
         <label>
-          https://...
-          <input type="file" placeholder="https//..." />
+          Avatar Files
         </label>
+        <input type="text" placeholder="https//..." />
         <span>Preview:</span>
         <img src={avatar} alt="previewImage" />
       </section>
-
       <BtnContainer>
         <LargeButton>Previous</LargeButton>
-        <LargeButton>Finish</LargeButton>
+        <LargeButton type="submit">
+          Finish
+        </LargeButton>
       </BtnContainer>
     </AvatarContainer>
   );

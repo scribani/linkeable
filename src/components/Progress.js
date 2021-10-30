@@ -1,57 +1,41 @@
-import { CloseButton } from "./Buttons";
-import {
-  FlexTitleForm,
-  NumberProgressC,
-  NumberProgressNC,
-  ProgressBar,
-  ProgressStatus,
-  StateProgressNC,
-  TextProgress,
-} from "./Forms";
-import {
-  StateProgressC,
-  StepProgressC,
-  StepProgressNC,
-  TitleForm,
-} from "./Texts";
-import cancelButton from "../assets/cancel.svg";
-import checked from "../assets/checked.svg";
+import styled from "@emotion/styled";
+import { Finished, InProgress, Waiting } from "./ProgressSteps";
 
-const Progress = () => {
+const ProgressBar = styled.div`
+  width: 340px;
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+`;
+
+export default function Progress({ currentStep }) {
+  const steps = [
+    { number: 1, description: "Personal information" },
+    { number: 2, description: "Work experience" },
+    { number: 3, description: "Avatar" },
+  ];
+
   return (
-    <div>
-      <FlexTitleForm>
-        <TitleForm>Create a new Candidate</TitleForm>
-        <CloseButton src={cancelButton} alt="close" />
-      </FlexTitleForm>
-
+    <>
       <ProgressBar>
-        <ProgressStatus>
-          <NumberProgressC>1</NumberProgressC>
-          <TextProgress>
-            <StateProgressC>Progress</StateProgressC>
-            <StepProgressC>Personal</StepProgressC>
-            <StepProgressC>information</StepProgressC>
-          </TextProgress>
-        </ProgressStatus>
-        <ProgressStatus>
-          <NumberProgressNC>2</NumberProgressNC>
-          <TextProgress>
-            <StateProgressNC>Waiting</StateProgressNC>
-            <StepProgressNC>Work</StepProgressNC>
-            <StepProgressNC>experience</StepProgressNC>
-          </TextProgress>
-        </ProgressStatus>
-        <ProgressStatus>
-          <img src={checked} alt="checked" />
-          <TextProgress>
-            <StateProgressNC>Waiting</StateProgressNC>
-            <StepProgressNC>Avatar</StepProgressNC>
-          </TextProgress>
-        </ProgressStatus>
+        {steps.map(({ number, description }) => {
+          if (number < currentStep) {
+            return <Finished key={number} description={description} />;
+          } else if (number === currentStep) {
+            return (
+              <InProgress
+                key={number}
+                step={number}
+                description={description}
+              />
+            );
+          } else {
+            return (
+              <Waiting key={number} step={number} description={description} />
+            );
+          }
+        })}
       </ProgressBar>
-    </div>
+    </>
   );
-};
-
-export default Progress;
+}

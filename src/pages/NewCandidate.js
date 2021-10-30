@@ -1,5 +1,13 @@
+import Progress from "../components/Progress"
+import PersonalInformationForm from "./PersonalInformationForm"
+
 const NewCandidate = () => {
-  return <h1>New Candidate</h1>
+  return (
+    <div>
+      <Progress/>
+      <PersonalInformationForm/>
+    </div>
+  )
 }
 
 export default NewCandidate

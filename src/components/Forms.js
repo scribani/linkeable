@@ -130,6 +130,7 @@ export const TextArea = styled.textarea`
 
 export const InputDate = styled.input`
   font-family: "Inter", sans-serif;
+  cursor: pointer;
   border: 1px solid #f2f2f2;
   box-sizing: border-box;
   border-radius: 8px;
@@ -156,6 +157,7 @@ export const InputDate = styled.input`
     display: block;
     background: url(calendar) no-repeat;
     margin-top: 5px;
+    cursor: pointer;
   }
 `;
 

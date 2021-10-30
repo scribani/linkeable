@@ -1,46 +1,13 @@
-import { FlexTitleForm, TextProgress, ProgressBar, ProgressStatus } from "../components/Forms";
-import { NumberProgressNC, StateProgressNC, NumberProgressC } from "../components/Forms";
 import { InputDate, InputRadio, Label, LabelForm } from "../components/Forms";
 import { Form, Input, Select, TextArea } from "../components/Forms";
-import { MaxCh, NameInput, StateProgressC, StepProgressC, StepProgressNC, TitleForm } from "../components/Texts";
-import { CloseButton, LargeButton, LargeButtonDisable } from "../components/Buttons";
-import cancelButton from "../assets/cancel.svg";
+import { MaxCh, NameInput } from "../components/Texts";
+import { LargeButton, LargeButtonDisable } from "../components/Buttons";
 
 const PersonalInformationForm = () => {
+  const isCompleted = 1;
+
   return (
     <div>
-      <FlexTitleForm>
-        <TitleForm>Create a new Candidate</TitleForm>
-        <CloseButton src={cancelButton} alt="close" />
-      </FlexTitleForm>
-      <ProgressBar>
-        <ProgressStatus>
-          <NumberProgressC>1</NumberProgressC>
-          <TextProgress>
-            <StateProgressC>Progress</StateProgressC>
-            <StepProgressC>Personal</StepProgressC>
-            <StepProgressC>information</StepProgressC>
-          </TextProgress>
-        </ProgressStatus>
-
-        <ProgressStatus>
-          <NumberProgressNC>2</NumberProgressNC>
-          <TextProgress>
-            <StateProgressNC>Waiting</StateProgressNC>
-            <StepProgressNC>Work</StepProgressNC>
-            <StepProgressNC>experience</StepProgressNC>
-          </TextProgress>
-        </ProgressStatus>
-
-        <ProgressStatus>
-          <NumberProgressNC>3</NumberProgressNC>
-          <TextProgress>
-            <StateProgressNC>Waiting</StateProgressNC>
-            <StepProgressNC>Avatar</StepProgressNC>
-          </TextProgress>
-        </ProgressStatus>
-      </ProgressBar>
-
       <Form>
         <label>
           <NameInput>Name</NameInput>
@@ -48,7 +15,7 @@ const PersonalInformationForm = () => {
         </label>
         <label>
           <NameInput>Phone</NameInput>
-          <Input type="text" name="phone" placeholder="xxx-xxx-xxx"/>
+          <Input type="text" name="phone" placeholder="xxx-xxx-xxx" />
         </label>
         <NameInput>Gender</NameInput>
         <LabelForm>
@@ -72,7 +39,7 @@ const PersonalInformationForm = () => {
         </label>
         <label>
           <NameInput>Nationality</NameInput>
-          <Select name="nationality" id="nationality" defaultValue={'DEFAULT'}>
+          <Select name="nationality" id="nationality" defaultValue={"DEFAULT"}>
             <option value="DEFAULT" disabled hidden>
               Select an option
             </option>
@@ -104,12 +71,15 @@ const PersonalInformationForm = () => {
             placeholder="Software Engineer"
           />
         </label>
-        <LargeButtonDisable type="submit" value="Submit" disabled>
-          Next
-        </LargeButtonDisable>
-        <LargeButton style={{margin: "auto"}} type="submit" value="Submit">
-          Next
-        </LargeButton>
+        {isCompleted === 1 ? (
+          <LargeButtonDisable type="submit" value="Submit" disabled>
+            Next
+          </LargeButtonDisable>
+        ) : (
+          <LargeButton style={{ margin: "auto" }} type="submit" value="Submit">
+            Next
+          </LargeButton>
+        )}
       </Form>
     </div>
   );

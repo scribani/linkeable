@@ -7,15 +7,24 @@ import homeIcon from "../assets/home.svg";
 import addIcon from "../assets/add.svg";
 import CandidateCard from "../components/CandidateCard";
 import { getDocuments } from "../services/firebase/store";
+import Collapse from "../components/UI/Collapse";
+import Filters from "../components/Filters";
 
 const StyledNavBar = styled.nav`
-  position: absolute;
+  position: fixed;
   top: calc(100vh - 54px);
   width: 360px;
   display: flex;
   justify-content: space-between;
   padding: 0 32px 14px 32px;
   background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
+  img {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
 `;
 
 export default function Candidates() {
@@ -42,15 +51,10 @@ export default function Candidates() {
         <input type="text" placeholder="Search" />
       </div>
 
-      <div
-        style={{
-          marginTop: "16px",
-          marginBottom: "12px",
-          fontSize: "14px",
-          lineHeight: "17px",
-        }}
-      >
-        More filters
+      <div>
+        <Collapse button="More filters">
+          <Filters />
+        </Collapse>
       </div>
 
       <CandidatesContainer>

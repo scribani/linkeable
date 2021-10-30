@@ -1,4 +1,4 @@
-import { CloseButton } from "./Buttons";
+import { CloseButton } from "./UI/Buttons";
 import {
   FlexTitleForm,
   NumberProgressC,

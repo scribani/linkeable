@@ -1,6 +1,6 @@
-import WorkExperience from "../components/WorkExperience";
+import WorkExperienceForm from "./WorkExperienceForm";
 
 export default function NotFound() {
-  return <h1><WorkExperience /></h1>
+  return <h1><WorkExperienceForm /></h1>
 
 }

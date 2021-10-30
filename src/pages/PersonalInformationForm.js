@@ -1,7 +1,7 @@
 import { InputDate, InputRadio, Label, LabelForm } from "../components/Forms";
 import { Form, Input, Select, TextArea } from "../components/Forms";
 import { MaxCh, NameInput } from "../components/Texts";
-import { LargeButton, LargeButtonDisable } from "../components/Buttons";
+import { LargeButton, LargeButtonDisable } from "../components/UI/Buttons";
 
 const PersonalInformationForm = () => {
   const isCompleted = 1;

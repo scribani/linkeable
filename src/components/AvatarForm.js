@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { LargeButton } from "./Buttons";
+import { LargeButton } from "./UI/Buttons";
 import avatar from "../assets/avatar.png"
 const AvatarContainer = styled.div`
 

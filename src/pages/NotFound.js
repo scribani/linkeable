@@ -1,6 +1,3 @@
-import WorkExperienceForm from "./WorkExperienceForm";
-
 export default function NotFound() {
-  return <h1><WorkExperienceForm /></h1>
-
+  return <h1>Not Found</h1>;
 }

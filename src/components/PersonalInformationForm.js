@@ -172,7 +172,7 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
       {submitable ? (
         <LargeButton type="submit">Next</LargeButton>
       ) : (
-        <LargeButtonDisable>Next</LargeButtonDisable>
+        <LargeButtonDisable disabled>Next</LargeButtonDisable>
       )}
     </Form>
   );

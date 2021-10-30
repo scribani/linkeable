@@ -6,7 +6,7 @@ function formReducer(form, action) {
     case PERSONAL_INFO:
       return { ...form, ...action.personalInfo };
     case WORK_EXP:
-      return { ...form, workExperience: action.experience };
+      return { ...form, workExperience: action.experiences };
     case AVATAR_URL:
       return { ...form, avatarURL: action.url };
     default:

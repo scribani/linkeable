@@ -66,18 +66,24 @@ export default function ExperienceForm({
     setForm(initialForm);
   };
 
-  const onNextStep = () => {
-    if (experiences.length < 1) {
+  const onNextStep = (e) => {
+    e.preventDefault();
+    if (!submitable && experiences.length < 1) {
       alert("Fill at least one experience");
       return;
     }
 
-    if (form.endDate === "") {
+    if (submitable && form.endDate === "") {
       setForm({ ...form, endDate: "current" });
     }
-    addExperience(form);
-    fillForm({ type: WORK_EXP, experiences: experiences });
+    fillForm({ type: WORK_EXP, experiences: [...experiences, form] });
+    // addExperience(form);
     stepUpdate(3);
+  };
+
+  const onPreviousStep = (e) => {
+    e.preventDefault();
+    stepUpdate(1);
   };
 
   function setFormValue(e) {
@@ -127,16 +133,16 @@ export default function ExperienceForm({
         {submitable && !data && (
           <>
             <LargeButton type="submit">Add another experience</LargeButton>
-            <LargeButton>Previous</LargeButton>
+            <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
             <LargeButton onClick={onNextStep}>Next</LargeButton>
           </>
         )}
         {!submitable && !data && (
           <>
-            <LargeButtonDisable disabled>
+            <LargeButtonDisable type="submit" disabled>
               Add another experience
             </LargeButtonDisable>
-            <LargeButton>Previous</LargeButton>
+            <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
             <LargeButton onClick={onNextStep}>Next</LargeButton>
           </>
         )}

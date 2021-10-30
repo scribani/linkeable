@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { LargeButton } from "./UI/Buttons";
-import avatar from "../assets/avatar.png"
-const AvatarContainer = styled.div`
+import avatar from "../assets/avatar.png";
+import { AVATAR_URL } from "../constants";
 
+const AvatarContainer = styled.div`
   max-width: 300px;
   height: 350px;
   margin: auto;
@@ -32,13 +33,13 @@ const AvatarContainer = styled.div`
       width: 200px;
       color: var(--gray-5);
     }
-  
-    img{
-     width: 50%;
-     align-self: center;
-     margin-bottom:-10px;
-     border-radius: 50px;
-     border: 1px solid #ccc;
+
+    img {
+      width: 50%;
+      align-self: center;
+      margin-bottom: -10px;
+      border-radius: 50px;
+      border: 1px solid #ccc;
     }
   }
 `;
@@ -50,23 +51,32 @@ const BtnContainer = styled.div`
   align-items: center;
 `;
 
-export const AvatarForm = () => {
+export const AvatarForm = ({ fillForm, stepUpdate }) => {
+  function handleSubmit(e, prev = false) {
+    e.preventDefault();
+
+    if (prev) return stepUpdate(2);
+
+    fillForm({ type: AVATAR_URL, url: "" });
+    alert("Form filled!, call API now");
+  }
+
   return (
     <AvatarContainer>
-      <section>
-        <label>
-          Avatar Files
-        </label>
+      <form>
+        <label>Avatar Files</label>
         <input type="text" placeholder="https//..." />
         <span>Preview:</span>
         <img src={avatar} alt="previewImage" />
-      </section>
-      <BtnContainer>
-        <LargeButton>Previous</LargeButton>
-        <LargeButton type="submit">
-          Finish
-        </LargeButton>
-      </BtnContainer>
+        <BtnContainer>
+          <LargeButton onClick={(e) => handleSubmit(e, true)}>
+            Previous
+          </LargeButton>
+          <LargeButton type="submit" onClick={handleSubmit}>
+            Finish
+          </LargeButton>
+        </BtnContainer>
+      </form>
     </AvatarContainer>
   );
 };

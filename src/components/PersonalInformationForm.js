@@ -27,6 +27,7 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
   });
   const submitable = useSubmitable(form, [
     "name",
+    "phone",
     "gender",
     "birthday",
     "nationality",
@@ -35,8 +36,6 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!submitable) return;
-
     fillForm({ type: PERSONAL_INFO, personalInfo: form });
     stepUpdate(2);
   }
@@ -173,7 +172,7 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
       {submitable ? (
         <LargeButton type="submit">Next</LargeButton>
       ) : (
-        <LargeButtonDisable type="submit">Next</LargeButtonDisable>
+        <LargeButtonDisable>Next</LargeButtonDisable>
       )}
     </Form>
   );

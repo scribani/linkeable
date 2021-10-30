@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { AVATAR_URL, PERSONAL_INFO, RESET, WORK_EXP } from "../constants";
+import { AVATAR_URL, PERSONAL_INFO, WORK_EXP } from "../constants";
 
 function formReducer(form, action) {
   switch (action.type) {
@@ -9,18 +9,6 @@ function formReducer(form, action) {
       return { ...form, workExperience: action.experience };
     case AVATAR_URL:
       return { ...form, avatarURL: action.url };
-    case RESET:
-      return {
-        name: "",
-        phone: "",
-        gender: "",
-        birthday: "",
-        nationality: "",
-        bio: "",
-        profession: "",
-        workExperience: [],
-        avatarURL: "",
-      };
     default:
       return form;
   }

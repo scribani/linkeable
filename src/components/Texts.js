@@ -6,25 +6,6 @@ export const TitleForm = styled.h1`
   line-height: 24px;
 `;
 
-export const StateProgressC = styled.h2`
-  font-size: 14px;
-  line-height: 17px;
-  margin-bottom: 2px;
-  color: var(--gray-2);
-`;
-
-export const StepProgressC = styled.p`
-  font-size: 10px;
-  line-height: 12px;
-  color: var(--gray-2);
-`;
-
-export const StepProgressNC = styled.p`
-  font-size: 10px;
-  line-height: 12px;
-  color: var(--gray-4);
-`;
-
 export const NameInput = styled.p`
   font-size: 14px;
   line-height: 17px;

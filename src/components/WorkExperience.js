@@ -69,7 +69,6 @@ export default function WorkExperience () {
     console.log(workData)
   }
 
-  const setActive = () => 
 
   return (
     <>

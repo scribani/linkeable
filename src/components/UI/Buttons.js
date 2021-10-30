@@ -1,18 +1,5 @@
 import styled from "@emotion/styled";
 
-export const LargeButtonDisable = styled.button`
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 17px;
-  width: 56px;
-  background: transparent;
-  color: var(--gray-5);
-  border: 1px solid var(--gray-5);
-  border-radius: 8px;
-  cursor: not-allowed;
-  margin: auto;
-`;
-
 export const LargeButton = styled.button`
   padding: 8px 12px;
   font-size: 14px;
@@ -22,6 +9,15 @@ export const LargeButton = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  margin: auto;
+`;
+
+export const LargeButtonDisable = styled(LargeButton)`
+  background: transparent;
+  color: var(--gray-5);
+  border: 1px solid var(--gray-5);
+  border-radius: 8px;
+  cursor: not-allowed;
 `;
 
 export const MediumButton = styled(LargeButton)`
@@ -46,7 +42,9 @@ export const IconButton = styled.button`
   cursor: pointer;
 `;
 
-export const CloseButton = styled.img`
+export const CloseButton = styled.button`
+  background: none;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   &:hover {

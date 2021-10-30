@@ -15,13 +15,18 @@ const globalCSS = css`
     --gray-4: #bdbdbd;
     --gray-5: #e0e0e0;
     --card-shadow: 2px 2px 0px #bdbdbd;
+    --blue-c: #2f80ed;
   }
   * {
     box-sizing: border-box;
+    margin: 0;
   }
-  body {
+  html, body {
+    height: 100% !important;
+    margin: 0;
     font-family: "Inter", sans-serif;
     color: var(--gray-2);
+    background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
   }
 `;
 

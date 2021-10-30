@@ -15,6 +15,7 @@ const globalCSS = css`
     --gray-4: #bdbdbd;
     --gray-5: #e0e0e0;
     --card-shadow: 2px 2px 0px #bdbdbd;
+    --bg-color:#E5E5E5;
     --blue-c: #2f80ed;
   }
   * {

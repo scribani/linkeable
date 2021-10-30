@@ -16,14 +16,18 @@ const globalCSS = css`
     --gray-5: #e0e0e0;
     --card-shadow: 2px 2px 0px #bdbdbd;
     --bg-color:#E5E5E5;
+    --blue-c: #2f80ed;
   }
   * {
     box-sizing: border-box;
+    margin: 0;
   }
-  body {
+  html, body {
+    height: 100% !important;
+    margin: 0;
     font-family: "Inter", sans-serif;
     color: var(--gray-2);
-    background-color: var(--bg-color);
+    background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
   }
 `;
 

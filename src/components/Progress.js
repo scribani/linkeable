@@ -1,48 +1,57 @@
-import styled from "@emotion/styled";
+import { CloseButton } from "./Buttons";
+import {
+  FlexTitleForm,
+  NumberProgressC,
+  NumberProgressNC,
+  ProgressBar,
+  ProgressStatus,
+  StateProgressNC,
+  TextProgress,
+} from "./Forms";
+import {
+  StateProgressC,
+  StepProgressC,
+  StepProgressNC,
+  TitleForm,
+} from "./Texts";
+import cancelButton from "../assets/cancel.svg";
+import checked from "../assets/checked.svg";
 
-export default function StepBar () {
-  const StepBar = styled.form`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly; 
-    gap: 20px;
-  `;
-  const Step = styled.form`
-    .number {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19.36px;
-    }
-    .number--finished {
-
-    }
-    .number--progress {
-      color: #fff;
-      background-color: #2F80ED;
-
-      
-    }
-    .number--finished {
-
-    }
-
-    .title {
-
-    }
-    .description {
-
-    }
-
-  `;
-
+const Progress = () => {
   return (
-    <StepBar>
-      <Step>
-        <p className="number">1</p>
-        <p className="title">Finished</p>
-        <p className="description">Description of the step</p>
-      </Step>
-    </StepBar>
+    <div>
+      <FlexTitleForm>
+        <TitleForm>Create a new Candidate</TitleForm>
+        <CloseButton src={cancelButton} alt="close" />
+      </FlexTitleForm>
 
-  ) 
-}
+      <ProgressBar>
+        <ProgressStatus>
+          <NumberProgressC>1</NumberProgressC>
+          <TextProgress>
+            <StateProgressC>Progress</StateProgressC>
+            <StepProgressC>Personal</StepProgressC>
+            <StepProgressC>information</StepProgressC>
+          </TextProgress>
+        </ProgressStatus>
+        <ProgressStatus>
+          <NumberProgressNC>2</NumberProgressNC>
+          <TextProgress>
+            <StateProgressNC>Waiting</StateProgressNC>
+            <StepProgressNC>Work</StepProgressNC>
+            <StepProgressNC>experience</StepProgressNC>
+          </TextProgress>
+        </ProgressStatus>
+        <ProgressStatus>
+          <img src={checked} alt="checked" />
+          <TextProgress>
+            <StateProgressNC>Waiting</StateProgressNC>
+            <StepProgressNC>Avatar</StepProgressNC>
+          </TextProgress>
+        </ProgressStatus>
+      </ProgressBar>
+    </div>
+  );
+};
+
+export default Progress;

@@ -18,13 +18,18 @@ const globalCSS = css`
     --bg-gray: #e5e5e5;
     --border-gray: 1px solid #bdbdbd;
     --card-shadow: 2px 2px 0px #bdbdbd;
+    --bg-color: #e5e5e5;
+    --blue-c: #2f80ed;
   }
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
+  html,
   body {
+    height: 100% !important;
+    margin: 0;
     font-family: "Inter", sans-serif;
     color: var(--gray-2);
     background-color: var(--bg-gray);

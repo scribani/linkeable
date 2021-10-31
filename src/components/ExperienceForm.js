@@ -5,34 +5,14 @@ import { CloseButton } from "./UI/Buttons";
 import cancelButton from "../assets/cancel.svg";
 import useSubmitable from "../hooks/useSubmitable";
 import { WORK_EXP } from "../constants";
+import { Input, Label, InputDate, Form } from "./Forms";
+import { NameInput } from "./Texts";
 
-const Experience = styled.form`
+const BtnContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 400px;
-  padding: 20px;
-  .prev-next {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-  }
-  .button {
-    display: block;
-    border: solid 1px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  .active {
-    background-color: #4f4f4f;
-    color: #fff;
-  }
-  .inactive {
-    background-color: #f2f2f2;
-    color: #e0e0e0;
-    border: solid 1px #e0e0e0;
-  }
+  justify-content: space-evenly;
+  width: 200px;
+  align-items: center;
 `;
 
 const initialForm = {
@@ -97,44 +77,54 @@ export default function ExperienceForm({
           <img src={cancelButton} alt="Cancel new candidate" />
         </CloseButton>
       )}
-      <Experience onSubmit={handleSubmit}>
-        <label>Occupation</label>
-        <input
-          name="occupation"
-          onChange={setFormValue}
-          value={form.occupation}
-          type="text"
-          disabled={!!data}
-        />
-        <label>Company</label>
-        <input
-          name="company"
-          onChange={setFormValue}
-          value={form.company}
-          type="text"
-          disabled={!!data}
-        />
-        <label>Start date</label>
-        <input
-          name="startDate"
-          onChange={setFormValue}
-          value={form.startDate}
-          type="date"
-          disabled={!!data}
-        />
-        <label>End date</label>
-        <input
-          name="endDate"
-          onChange={setFormValue}
-          value={form.endDate}
-          type="date"
-          disabled={!!data}
-        />
+      <Form className="occupation" onSubmit={handleSubmit}>
+        <label>
+          <NameInput>Occupation</NameInput>
+          <Input
+            name="occupation"
+            onChange={setFormValue}
+            value={form.occupation}
+            type="text"
+            disabled={!!data}
+          />
+        </label>
+        <label>
+          <NameInput>Company</NameInput>
+          <Input
+            name="company"
+            onChange={setFormValue}
+            value={form.company}
+            type="text"
+            disabled={!!data}
+          />
+        </label>
+        <label>
+          <NameInput>Start date</NameInput>
+          <InputDate
+            name="startDate"
+            onChange={setFormValue}
+            value={form.startDate}
+            type="date"
+            disabled={!!data}
+          />
+        </label>
+        <label>
+          <NameInput>End date</NameInput>
+          <InputDate
+            name="endDate"
+            onChange={setFormValue}
+            value={form.endDate}
+            type="date"
+            disabled={!!data}
+          />
+        </label>
         {submitable && !data && (
           <>
             <LargeButton type="submit">Add another experience</LargeButton>
-            <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
-            <LargeButton onClick={onNextStep}>Next</LargeButton>
+            <BtnContainer>
+              <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
+              <LargeButton onClick={onNextStep}>Next</LargeButton>
+            </BtnContainer>
           </>
         )}
         {!submitable && !data && (
@@ -142,11 +132,13 @@ export default function ExperienceForm({
             <LargeButtonDisable type="submit" disabled>
               Add another experience
             </LargeButtonDisable>
-            <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
-            <LargeButton onClick={onNextStep}>Next</LargeButton>
+            <BtnContainer>
+              <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
+              <LargeButton onClick={onNextStep}>Next</LargeButton>
+            </BtnContainer>
           </>
         )}
-      </Experience>
+      </Form>
     </>
   );
 }

@@ -5,6 +5,16 @@ export const Form = styled.form`
   width: ${(props) => props.width || "240px"};
   display: flex;
   flex-direction: column;
+  .occupation {
+    /* border: 1px solid #bdbdbd; */
+    /* padding: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: blue;
+    border-radius: 8px; */
+    border: 5px solid #e0e0e0;
+    border-radius: 8px 8px 8px 8px;
+  }
 `;
 
 export const Input = styled.input`

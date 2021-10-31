@@ -9,6 +9,7 @@ import CandidateCard from "../components/CandidateCard";
 import { getDocuments } from "../services/firebase/store";
 import Collapse from "../components/UI/Collapse";
 import Filters from "../components/Filters";
+import SearchBar from "../components/SearchBar";
 
 const StyledNavBar = styled.nav`
   position: fixed;
@@ -39,32 +40,17 @@ export default function Candidates() {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "2px",
-          fontSize: "14px",
-          lineHeight: "17px",
-        }}
-      >
-        <label>Search for candidates</label>
-        <input type="text" placeholder="Search" />
-      </div>
+      <SearchBar />
 
-      <div>
-        <Collapse button="More filters">
-          <Filters companies={setFilterCompany} />
-          {console.log(FilterCompany)}
-        </Collapse>
-      </div>
+      <Collapse button="More filters">
+        <Filters companies={setFilterCompany} />
+      </Collapse>
 
       <CandidatesContainer>
         {!FilterCompany &&
           candidates.map((candidate) => (
             <CandidateCard key={candidate.name} {...candidate} />
           ))}
-        {console.log(candidates.filter((c)=> FilterCompany.includes(c.workExperience[0])))}
       </CandidatesContainer>
 
       <StyledNavBar>

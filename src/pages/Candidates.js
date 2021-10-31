@@ -29,6 +29,7 @@ const StyledNavBar = styled.nav`
 
 export default function Candidates() {
   const [candidates, setCandidates] = useState([]);
+  const [FilterCompany, setFilterCompany] = useState("");
 
   useEffect(() => {
     getDocuments("candidates").then((candidates) => {
@@ -53,14 +54,17 @@ export default function Candidates() {
 
       <div>
         <Collapse button="More filters">
-          <Filters />
+          <Filters companies={setFilterCompany} />
+          {console.log(FilterCompany)}
         </Collapse>
       </div>
 
       <CandidatesContainer>
-        {candidates.map((candidate) => (
-          <CandidateCard key={candidate.name} {...candidate} />
-        ))}
+        {!FilterCompany &&
+          candidates.map((candidate) => (
+            <CandidateCard key={candidate.name} {...candidate} />
+          ))}
+        {console.log(candidates.filter((c)=> FilterCompany.includes(c.workExperience[0])))}
       </CandidatesContainer>
 
       <StyledNavBar>

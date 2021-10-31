@@ -5,7 +5,7 @@ import query from "../assets/query.svg";
 import { InputRadio, Label, LabelForm } from "./Forms";
 import { useState } from "react";
 
-const Filters = () => {
+const Filters = ({git }) => {
   const initialForm = {
     company: "",
     minexp: "",
@@ -32,6 +32,7 @@ const Filters = () => {
   function setFilterValue(e) {
     e.preventDefault();
     setFilter({ ...filter, [e.target.name]: e.target.value });
+    companies(e.target.value)
   }
 
   function setCountryValue(e) {
@@ -91,7 +92,6 @@ const Filters = () => {
             defaultValue={""}
             onChange={setCountryValue}
           >
-            {console.log(country)}
             <option value="" disabled hidden>
               Select a country
             </option>

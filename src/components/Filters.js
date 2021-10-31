@@ -3,8 +3,47 @@ import { MaxCh, NameInput } from "./Texts";
 import cancel from "../assets/cancelBubble.svg";
 import query from "../assets/query.svg";
 import { InputRadio, Label, LabelForm } from "./Forms";
+import { useState } from "react";
 
 const Filters = () => {
+  const initialForm = {
+    company: "",
+    minexp: "",
+    maxexp: "",
+    minage: "",
+    maxage: "",
+    gender: "",
+  };
+
+  const initialFormCountry = {
+    Argentina: "",
+    Bolivia: "",
+    Chile: "",
+    Colombia: "",
+    Ecuador: "",
+    Peru: "",
+    Mexico: "",
+    Venezuela: "",
+  };
+
+  const [filter, setFilter] = useState(initialForm);
+  const [country, setCountry] = useState(initialFormCountry);
+
+  function setFilterValue(e) {
+    e.preventDefault();
+    setFilter({ ...filter, [e.target.name]: e.target.value });
+  }
+
+  function setCountryValue(e) {
+    e.preventDefault();
+    setCountry({ ...country, [e.target.value]: e.target.value });
+  }
+
+  function cleanCountry(e) {
+    e.preventDefault();
+    setCountry({ ...country, [e.target.id]: "" });
+  }
+
   return (
     <div>
       <Form>
@@ -15,9 +54,11 @@ const Filters = () => {
             type="text"
             name="company"
             placeholder="query"
+            value={filter.company}
+            onChange={setFilterValue}
           />
         </LabelW>
-        <LabelW style={{marginBottom: "4px"}}>
+        <LabelW style={{ marginBottom: "4px" }}>
           <NameInput style={{ marginTop: "4px", marginBottom: "4px" }}>
             Years of experience:
           </NameInput>
@@ -25,50 +66,75 @@ const Filters = () => {
           <input
             className="input-number"
             type="number"
-            name="min"
+            name="minexp"
             min="0"
             placeholder="0"
+            value={filter.minexp}
+            onChange={setFilterValue}
           />
           <label className="label-text">Max:</label>
           <input
             className="input-number"
             type="number"
-            name="max"
+            name="maxexp"
             min="0"
             placeholder="0"
+            value={filter.maxexp}
+            onChange={setFilterValue}
           />
         </LabelW>
         <LabelW>
-          <NameInput style={{marginBottom: "4px"}}>Country</NameInput>
+          <NameInput style={{ marginBottom: "4px" }}>Country</NameInput>
           <select
             className="inputSelect"
-            name="nationality"
-            id="nationality"
-            defaultValue={"DEFAULT"}
+            name="country"
+            defaultValue={""}
+            onChange={setCountryValue}
           >
-            <option value="DEFAULT" disabled hidden>
+            {console.log(country)}
+            <option value="" disabled hidden>
               Select a country
             </option>
-            <option value="argentina">Argentina</option>
-            <option value="bolivia">Bolivia</option>
-            <option value="chile">Chile</option>
-            <option value="colombia">Colombia</option>
-            <option value="ecuador">Ecuador</option>
-            <option value="peru">Peru</option>
-            <option value="venezuela">Venezuela</option>
-            <option value="other">Other</option>
+            <option value="Argentina" name="Argentina">
+              Argentina
+            </option>
+            <option value="Bolivia" name="Bolivia">
+              Bolivia
+            </option>
+            <option value="Chile" name="Chile">
+              Chile
+            </option>
+            <option value="Colombia" name="Colombia">
+              Colombia
+            </option>
+            <option value="Ecuador" name="Ecuador">
+              Ecuador
+            </option>
+            <option value="Mexico" name="Mexico">
+              Mexico
+            </option>
+            <option value="Peru" name="Peru">
+              Peru
+            </option>
+            <option value="Venezuela" name="Venezuela">
+              Venezuela
+            </option>
           </select>
           <div>
             <label className="label-country">Selected:</label>
-            <label className="label-bubble">
-              Peru <img alt="cancel" src={cancel} />
-            </label>
-            <label className="label-bubble">
-              Colombia <img alt="cancel" src={cancel} />
-            </label>
-            <label className="label-bubble">
-              Argentina <img alt="cancel" src={cancel} />
-            </label>
+            {Object.entries(country)
+              .filter((v) => v[1].length > 1)
+              .map((c) => (
+                <label key={c[1]} className="label-bubble">
+                  {c[1]}{" "}
+                  <img
+                    alt="cancel"
+                    src={cancel}
+                    id={c[1]}
+                    onClick={cleanCountry}
+                  />
+                </label>
+              ))}
           </div>
         </LabelW>
         <LabelW>
@@ -77,24 +143,32 @@ const Filters = () => {
           <input
             className="input-number"
             type="number"
-            name="age-min"
+            name="minage"
             min="0"
             placeholder="0"
+            value={filter.minage}
+            onChange={setFilterValue}
           />
           <label className="label-text">Max:</label>
           <input
             className="input-number"
             type="number"
-            name="age-max"
+            name="maxage"
             min="0"
             placeholder="0"
+            value={filter.maxage}
+            onChange={setFilterValue}
           />
         </LabelW>
         <LabelW>
           <NameInput style={{ marginTop: "4px", marginBottom: "4px" }}>
             Gender
           </NameInput>
-          <LabelForm style={{ marginBottom: "0" }}>
+          <LabelForm
+            style={{ marginBottom: "0" }}
+            value={filter.gender}
+            name="gender"
+          >
             <InputRadio type="checkbox" id="male" value="male" name="gender" />
             <Label htmlFor="male">Male</Label>
             <InputRadio
@@ -139,8 +213,8 @@ const Form = styled.form`
       outline: none;
       border-color: gray;
     }
-    &::placeholder{
-      color: var(--gray-5)
+    &::placeholder {
+      color: var(--gray-5);
     }
     background-image: url(${query});
     background-position: calc(100% - 10px) calc(0.3em + 0.1px),
@@ -168,8 +242,8 @@ const Form = styled.form`
       outline: none;
       border-color: gray;
     }
-    &::placeholder{
-      color: var(--gray-5)
+    &::placeholder {
+      color: var(--gray-5);
     }
   }
   .input-number {
@@ -184,8 +258,8 @@ const Form = styled.form`
       outline: none;
       border-color: gray;
     }
-    &::placeholder{
-      color: var(--gray-5)
+    &::placeholder {
+      color: var(--gray-5);
     }
   }
   .label-text {

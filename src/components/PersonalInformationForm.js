@@ -139,6 +139,9 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
           <option value="pe" onChange={setFormValue}>
             Peru
           </option>
+          <option value="mx" onChange={setFormValue}>
+            Mexico
+          </option>
           <option value="ve" onChange={setFormValue}>
             Venezuela
           </option>

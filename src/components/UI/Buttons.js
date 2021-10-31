@@ -25,6 +25,17 @@ export const MediumButton = styled(LargeButton)`
   cursor: pointer;
 `;
 
+export const SmallButtonDisable = styled(LargeButton)`
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 15px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--gray-5);
+  border: 1px solid var(--gray-5);
+  cursor: not-allowed;
+`;
+
 export const SmallButton = styled(LargeButton)`
   padding: 2px 8px;
   font-size: 12px;

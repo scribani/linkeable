@@ -9,4 +9,5 @@ export default styled.ul`
   align-items: center;
   gap: 12px;
   overflow-y: auto;
+  padding-bottom: 45px;
 `;

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function useSubmitable(form, requiredFields) {
   const [submitable, setSubmitable] = useState(false);
   const requiredData = requiredFields.map((field) => form[field]);
-  console.log(requiredData);
+
   useEffect(() => {
     if (requiredData.every((field) => field) && requiredFields.length > 0) {
       setSubmitable(true);

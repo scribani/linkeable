@@ -15,7 +15,7 @@ import { MaxCh, NameInput } from "./Texts";
 import { LargeButton, LargeButtonDisable } from "./UI/Buttons";
 
 function PersonalInformationForm({ data, fillForm, stepUpdate }) {
-  const { name, phone, gender, birthday, nationality, bio, profession } = data;
+  const { name, phone, gender, birthday, nationality, bio, profesion } = data;
   const [form, setForm] = useState({
     name,
     phone,
@@ -23,7 +23,7 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
     birthday,
     nationality,
     bio,
-    profession,
+    profesion,
   });
   const submitable = useSubmitable(form, [
     "name",
@@ -31,7 +31,7 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
     "gender",
     "birthday",
     "nationality",
-    "profession",
+    "profesion",
   ]);
 
   function handleSubmit(e) {
@@ -166,8 +166,8 @@ function PersonalInformationForm({ data, fillForm, stepUpdate }) {
         <NameInput>Profession</NameInput>
         <Input
           type="text"
-          name="profession"
-          value={form.profession}
+          name="profesion"
+          value={form.profesion}
           onChange={setFormValue}
           placeholder="Software Engineer"
         />

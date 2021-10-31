@@ -21,6 +21,7 @@ const AvatarPreview = styled.img`
   border: var(--border-gray);
   margin: auto;
   margin-top: 6px;
+  object-fit: cover;
 `;
 
 export const AvatarForm = ({ fillForm, stepUpdate }) => {

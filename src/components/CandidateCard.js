@@ -26,6 +26,7 @@ const Avatar = styled.img`
   height: 60px;
   border-radius: 100px;
   border: var(--border-gray);
+  object-fit: cover;
 `;
 
 const CountryFlag = styled.img`

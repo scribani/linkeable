@@ -18,7 +18,7 @@ const initialForm = {
   occupation: "",
   company: "",
   startDate: "",
-  endDate: "",
+  endDate: "current",
 };
 
 export default function ExperienceForm({
@@ -38,9 +38,6 @@ export default function ExperienceForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.endDate === "") {
-      setForm({ ...form, endDate: "current" });
-    }
     addExperience(form);
     setForm(initialForm);
   };

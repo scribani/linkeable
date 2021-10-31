@@ -6,9 +6,11 @@ import { CloseButton } from "../components/UI/Buttons";
 import cancelButton from "../assets/cancel.svg";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useHistory } from "react-router";
+import { useEffect, useState } from "react";
 import WorkExperienceForm from "../components/WorkExperienceForm";
 import useFormReducer from "../hooks/useFormReducer";
+import { saveDocument } from "../services/firebase/store";
 
 const MainContainer = styled.div`
   width: 100%;
@@ -27,6 +29,13 @@ export const Header = styled.div`
 const NewCandidate = () => {
   const [form, dispatch] = useFormReducer();
   const [currentStep, setCurrentStep] = useState(1);
+  const { push } = useHistory();
+
+  useEffect(() => {
+    if (form.avatarURL) {
+      saveDocument("candidates", form).then(() => push("/candidates"));
+    }
+  }, [form]);
 
   const formByStep = {
     1: (

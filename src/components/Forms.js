@@ -1,71 +1,20 @@
 import styled from "@emotion/styled";
 import calendar from "../assets/calendar.svg";
 
-export const FlexTitleForm = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 32px 12px 20px 10px;
-`;
-
-export const ProgressBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 18px;
-`;
-
-export const ProgressStatus = styled.div`
-  display: flex;
-  align-items: flex-start;
-`;
-
-// C in the last part of the variables means COMPLETED
-// NC in the last part of the variables means NO-COMPLETED
-
-export const NumberProgressC = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 19px;
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--blue-c);
-  background-color: var(--blue-c);
-  color: white;
-  border-radius: 50%;
-`;
-
-export const NumberProgressNC = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 19px;
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--gray-4);
-  color: var(--gray-4);
-  border-radius: 50%;
-`;
-
-export const TextProgress = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 4px;
-`;
-
-export const StateProgressNC = styled.h2`
-  font-size: 14px;
-  line-height: 17px;
-  margin-bottom: 2px;
-  color: var(--gray-4);
-`;
-
 export const Form = styled.form`
-  margin: 20px 60px 32px;
+  width: ${(props) => props.width || "240px"};
   display: flex;
   flex-direction: column;
+`;
+
+export const FormExperience = styled.form`
+  display: flex;
+  flex-direction: column;
+  .border-form {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px 8px 8px 8px;
+    padding: 8px;
+  }
 `;
 
 export const Input = styled.input`
@@ -184,7 +133,7 @@ export const Label = styled.label`
 `;
 
 export const LabelForm = styled.label`
-  border: 1px solid #BDBDBD;
+  border: 1px solid #bdbdbd;
   display: inline-block;
   margin: auto;
   border-radius: 5px;

@@ -1,82 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { LargeButton } from "./UI/Buttons";
 import avatar from "../assets/avatar.png";
 import { AVATAR_URL } from "../constants";
-
-const AvatarContainer = styled.div`
-  max-width: 300px;
-  height: 350px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  section {
-    display: flex;
-    flex-direction: column;
-    p {
-      padding: 0;
-      margin: 3px;
-    }
-    span {
-      margin: 3px;
-      font-weight: bold;
-      font-size: 12px;
-    }
-    input {
-      border: 1px solid #ccc;
-      display: inline-block;
-      border-radius: 10px;
-      padding: 6px 12px;
-      cursor: pointer;
-      width: 200px;
-      color: var(--gray-5);
-    }
-
-    img {
-      width: 50%;
-      align-self: center;
-      margin-bottom: -10px;
-      border-radius: 50px;
-      border: 1px solid #ccc;
-    }
-  }
-`;
+import { Form, Input } from "./Forms";
+import { NameInput } from "./Texts";
 
 const BtnContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  width: 200px;
-  align-items: center;
+  gap: 8px;
+  width: max-content;
+  margin: auto;
+  margin-top: 35px;
+`;
+
+const AvatarPreview = styled.img`
+  width: 90px;
+  height: 90px;
+  border-radius: 100px;
+  border: var(--border-gray);
+  margin: auto;
+  margin-top: 6px;
 `;
 
 export const AvatarForm = ({ fillForm, stepUpdate }) => {
-  function handleSubmit(e, prev = false) {
+  const [avatarURL, setAvatarURL] = useState("");
+
+  function handleSubmit(e) {
     e.preventDefault();
-
-    if (prev) return stepUpdate(2);
-
-    fillForm({ type: AVATAR_URL, url: "" });
-    alert("Form filled!, call API now");
+    fillForm({ type: AVATAR_URL, url: avatarURL });
   }
 
   return (
-    <AvatarContainer>
-      <form>
-        <label>Avatar Files</label>
-        <input type="text" placeholder="https//..." />
-        <span>Preview:</span>
-        <img src={avatar} alt="previewImage" />
-        <BtnContainer>
-          <LargeButton onClick={(e) => handleSubmit(e, true)}>
-            Previous
-          </LargeButton>
-          <LargeButton type="submit" onClick={handleSubmit}>
-            Finish
-          </LargeButton>
-        </BtnContainer>
-      </form>
-    </AvatarContainer>
+    <Form>
+      <label>
+        <NameInput>Avatar Files</NameInput>
+        <Input
+          type="text"
+          name="avatar"
+          value={avatarURL}
+          onChange={(e) => setAvatarURL(e.target.value)}
+          placeholder="https://..."
+          required
+        />
+      </label>
+      <NameInput>Preview:</NameInput>
+      {avatarURL && <AvatarPreview src={avatarURL} alt="" />}
+      <BtnContainer>
+        <LargeButton onClick={() => stepUpdate(2)}>Previous</LargeButton>
+        <LargeButton type="submit" onClick={handleSubmit}>
+          Finish
+        </LargeButton>
+      </BtnContainer>
+    </Form>
   );
 };

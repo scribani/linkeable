@@ -47,6 +47,10 @@ export const IconButton = styled.button`
   box-shadow: var(--card-shadow);
   border-radius: 100px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(0.7);
+  }
 `;
 
 export const CloseButton = styled.button`

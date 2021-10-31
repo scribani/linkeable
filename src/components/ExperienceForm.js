@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { LargeButton, LargeButtonDisable } from "./UI/Buttons";
+import { LargeButton, LargeButtonDisable, SmallButton, SmallButtonDisable } from "./UI/Buttons";
 import styled from "@emotion/styled";
 import { CloseButton } from "./UI/Buttons";
 import cancelButton from "../assets/cancel.svg";
 import useSubmitable from "../hooks/useSubmitable";
 import { WORK_EXP } from "../constants";
-import { Input, Label, InputDate, Form } from "./Forms";
+import { Input, Label, InputDate, Form, FormExperience } from "./Forms";
 import { NameInput } from "./Texts";
 
 const BtnContainer = styled.div`
@@ -77,7 +77,8 @@ export default function ExperienceForm({
           <img src={cancelButton} alt="Cancel new candidate" />
         </CloseButton>
       )}
-      <Form className="occupation" onSubmit={handleSubmit}>
+      <FormExperience onSubmit={handleSubmit}>
+        <div className="border-form">
         <label>
           <NameInput>Occupation</NameInput>
           <Input
@@ -118,9 +119,10 @@ export default function ExperienceForm({
             disabled={!!data}
           />
         </label>
+        </div>
         {submitable && !data && (
           <>
-            <LargeButton type="submit">Add another experience</LargeButton>
+            <SmallButton  style={{margin: "8px 0 35px"}}  type="submit">Add another experience</SmallButton>
             <BtnContainer>
               <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
               <LargeButton onClick={onNextStep}>Next</LargeButton>
@@ -129,16 +131,16 @@ export default function ExperienceForm({
         )}
         {!submitable && !data && (
           <>
-            <LargeButtonDisable type="submit" disabled>
+            <SmallButtonDisable style={{margin: "8px 0 35px"}} type="submit" disabled>
               Add another experience
-            </LargeButtonDisable>
+            </SmallButtonDisable>
             <BtnContainer>
               <LargeButton onClick={onPreviousStep}>Previous</LargeButton>
               <LargeButton onClick={onNextStep}>Next</LargeButton>
             </BtnContainer>
           </>
         )}
-      </Form>
+      </FormExperience>
     </>
   );
 }
